@@ -4,13 +4,32 @@
 // import { api } from "../convex/_generated/api";
 // import { useAuthActions } from "@convex-dev/auth/react";
 // import { useState } from "react";
-import { useRoutes } from "react-router-dom";
+
+import { BrowserRouter, useRoutes } from "react-router-dom";
 import routes from "~react-pages";
 
-export default function App() {
+import { LayoutTemplate } from "./components/templates/LayoutTemplate";
+import { LeftSidebarTemplate } from "./components/templates/LeftSidebarTemplate";
+
+function App() {
   return useRoutes(routes);
 }
 
+function AppWrapper() {
+  return (
+    <BrowserRouter basename={import.meta.env.VITE_APP_BASE_URL}>
+      <LayoutTemplate
+        RightHeader={<div>Right Header</div>}
+        LeftHeader={<div>Left Header</div>}
+        LeftSidebar={<LeftSidebarTemplate top={<div>Top</div>} middle={<div>Middle</div>} />}
+      >
+        <App />
+      </LayoutTemplate>
+    </BrowserRouter>
+  );
+}
+
+export default AppWrapper;
 // export default function App() {
 //   return (
 //     <>
