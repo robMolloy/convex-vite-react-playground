@@ -1,12 +1,6 @@
 "use client";
 
-import {
-  Authenticated,
-  Unauthenticated,
-  useConvexAuth,
-  useMutation,
-  useQuery,
-} from "convex/react";
+import { Authenticated, Unauthenticated, useConvexAuth, useMutation, useQuery } from "convex/react";
 import { api } from "../convex/_generated/api";
 import { useAuthActions } from "@convex-dev/auth/react";
 import { useState } from "react";
@@ -15,13 +9,13 @@ export default function App() {
   return (
     <>
       <header className="sticky top-0 z-10 bg-light dark:bg-dark p-4 border-b-2 border-slate-200 dark:border-slate-800">
-        Convex + React + Convex Auth
-        <SignOutButton />
+        <div className="flex justify-between">
+          LifePass B2B Dashboard
+          <SignOutButton />
+        </div>
       </header>
       <main className="p-8 flex flex-col gap-16">
-        <h1 className="text-4xl font-bold text-center">
-          Convex + React + Convex Auth
-        </h1>
+        <h1 className="text-4xl font-bold text-center">Convex + React + Convex Auth</h1>
         <Authenticated>
           <Content />
         </Authenticated>
@@ -87,11 +81,7 @@ function SignInForm() {
           {flow === "signIn" ? "Sign in" : "Sign up"}
         </button>
         <div className="flex flex-row gap-2">
-          <span>
-            {flow === "signIn"
-              ? "Don't have an account?"
-              : "Already have an account?"}
-          </span>
+          <span>{flow === "signIn" ? "Don't have an account?" : "Already have an account?"}</span>
           <span
             className="text-dark dark:text-light underline hover:no-underline cursor-pointer"
             onClick={() => setFlow(flow === "signIn" ? "signUp" : "signIn")}
@@ -101,9 +91,7 @@ function SignInForm() {
         </div>
         {error && (
           <div className="bg-red-500/20 border-2 border-red-500/50 rounded-md p-2">
-            <p className="text-dark dark:text-light font-mono text-xs">
-              Error signing in: {error}
-            </p>
+            <p className="text-dark dark:text-light font-mono text-xs">Error signing in: {error}</p>
           </div>
         )}
       </form>
@@ -130,8 +118,8 @@ function Content() {
     <div className="flex flex-col gap-8 max-w-lg mx-auto">
       <p>Welcome {viewer ?? "Anonymous"}!</p>
       <p>
-        Click the button below and open this page in another window - this data
-        is persisted in the Convex cloud database!
+        Click the button below and open this page in another window - this data is persisted in the
+        Convex cloud database!
       </p>
       <p>
         <button
@@ -143,12 +131,7 @@ function Content() {
           Add a random number
         </button>
       </p>
-      <p>
-        Numbers:{" "}
-        {numbers?.length === 0
-          ? "Click the button!"
-          : (numbers?.join(", ") ?? "...")}
-      </p>
+      <p>Numbers: {numbers?.length === 0 ? "Click the button!" : (numbers?.join(", ") ?? "...")}</p>
       <p>
         Edit{" "}
         <code className="text-sm font-bold font-mono bg-slate-200 dark:bg-slate-800 px-1 py-0.5 rounded-md">
