@@ -10,6 +10,9 @@ import routes from "~react-pages";
 
 import { LayoutTemplate } from "./components/templates/LayoutTemplate";
 import { LeftSidebarTemplate } from "./components/templates/LeftSidebarTemplate";
+import { useConvexAuth } from "convex/react";
+import { useAuthActions } from "@convex-dev/auth/react";
+import { Button } from "./components/ui/button";
 
 function App() {
   return useRoutes(routes);
@@ -19,9 +22,15 @@ function AppWrapper() {
   return (
     <BrowserRouter basename={import.meta.env.VITE_APP_BASE_URL}>
       <LayoutTemplate
-        RightHeader={<div>Right Header</div>}
-        LeftHeader={<div>Left Header</div>}
-        LeftSidebar={<LeftSidebarTemplate top={<div>Top</div>} middle={<div>Middle</div>} />}
+        LeftHeader={<div>LifePass B2B Dashboard</div>}
+        RightHeader={<SignOutButton />}
+        LeftSidebar={
+          <LeftSidebarTemplate
+            top={<div>Top</div>}
+            middle={<div>Middle</div>}
+            bottom={<div>Bottom</div>}
+          />
+        }
       >
         <App />
       </LayoutTemplate>
@@ -52,22 +61,10 @@ export default AppWrapper;
 //   );
 // }
 
-// function SignOutButton() {
-//   const { isAuthenticated } = useConvexAuth();
-//   const { signOut } = useAuthActions();
-//   return (
-//     <>
-//       {isAuthenticated && (
-//         <button
-//           className="bg-slate-200 dark:bg-slate-800 text-dark dark:text-light rounded-md px-2 py-1"
-//           onClick={() => void signOut()}
-//         >
-//           Sign out
-//         </button>
-//       )}
-//     </>
-//   );
-// }
+function SignOutButton() {
+  const { signOut } = useAuthActions();
+  return <Button onClick={() => void signOut()}>Sign out</Button>;
+}
 
 // function SignInForm() {
 //   const { signIn } = useAuthActions();
