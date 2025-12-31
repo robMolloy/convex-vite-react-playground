@@ -1,4 +1,4 @@
-import { AuthLoading, AuthSignedIn, AuthSignedOut, useAuth } from "@/hooks/useAuth";
+import { AuthLoading, AuthSignedIn, AuthSignedOut } from "@/hooks/useAuth";
 import { NavLink } from "react-router-dom";
 
 const IndexPage = () => {
