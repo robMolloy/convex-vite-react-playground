@@ -4,7 +4,7 @@ import { Tooltip } from "@radix-ui/react-tooltip";
 import { TooltipContent, TooltipProvider, TooltipTrigger } from "../ui/tooltip";
 import { PreserveScrollAbility } from "./LayoutTemplate";
 import { Link } from "react-router-dom";
-import { CustomIcon } from "../CustomIcon";
+import { CustomIcon } from "./CustomIcon";
 
 const SidebarButtonWrapper = (p: {
   children: React.ReactNode;

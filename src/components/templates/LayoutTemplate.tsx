@@ -1,5 +1,5 @@
 import { HeaderTemplate } from "./HeaderTemplate";
-import { Modal } from "./modal/Modal";
+import { Modal } from "./modalTemplates/Modal";
 
 export const PreserveScrollAbility = (p: {
   children: React.ReactNode;
